@@ -18,7 +18,6 @@ int main(void) {
 	int hours;
 	float gross; /* Gross Pay */
 	float tax; /* Taxes owed */
-	float netpay; /* Net Pay */
 
 	printf("Please enter hours worked in week: ");
 
@@ -28,12 +27,10 @@ int main(void) {
 
 	tax = taxes(gross);
 
-	netpay = gross - tax;
-
 	printf("Hours worked: %d\n", hours);
 	printf("Gross Pay: %0.2f\n", gross);
 	printf("Tax Owed: %0.2f\n", tax);
-	printf("Net Pay: %0.2f\n", netpay);
+	printf("Net Pay: %0.2f\n", gross - tax); /* no need for netpay var */
 
 	return 0;
 }
@@ -45,9 +42,12 @@ float taxes(float gp) {
 			((TAXBANDB - TAXBANDA) * (TAXRATE + TAXSTEP)) +
 			(gp - TAXBANDB) * (TAXRATE + (TAXSTEP * 2));
 	}
-	if (TAXBANDA > gp && gp <= TAXBANDB) {
+	if (gp <= TAXBANDB && gp > TAXBANDA) {
 		totaltax += (TAXBANDA * TAXRATE) + 
 			((gp - TAXBANDA) * (TAXRATE + TAXSTEP));
+	}
+	if (gp <= TAXBANDA) {
+		totaltax += (gp * TAXRATE);
 	}
 	return totaltax;
 }
