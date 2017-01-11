@@ -38,16 +38,16 @@ int main(void) {
 float taxes(float gp) {
 	float totaltax = 0.0;
 	if (gp > TAXBANDB) {
-		totaltax += (TAXBANDA * TAXRATE) + 
+		totaltax = (TAXBANDA * TAXRATE) + 
 			((TAXBANDB - TAXBANDA) * (TAXRATE + TAXSTEP)) +
 			(gp - TAXBANDB) * (TAXRATE + (TAXSTEP * 2));
 	}
 	if (gp <= TAXBANDB && gp > TAXBANDA) {
-		totaltax += (TAXBANDA * TAXRATE) + 
+		totaltax = (TAXBANDA * TAXRATE) + 
 			((gp - TAXBANDA) * (TAXRATE + TAXSTEP));
 	}
 	if (gp <= TAXBANDA) {
-		totaltax += (gp * TAXRATE);
+		totaltax = (gp * TAXRATE);
 	}
 	return totaltax;
 }
