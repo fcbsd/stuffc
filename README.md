@@ -5,3 +5,5 @@ The aim of this repository is to try and encourage me to do some C programming e
 The books I'm using for learning C are C Primer Plus, Fifth Edition by Stephen Prata, and The C Programming Language, Second Edition, by Brian W. Kernighan and Dennis M. Ritchie.
 
 In addition to these two texts I will also be diving into: Hacking: The Art Of Exploitation by Jon Erickson and Building Open Source Network Security Tools by Mike D. Schiffman.
+
+I've also added a kilo directory which follows the [Build Your Own Editor tutorial](http://viewsourcecode.org/snaptoken/kilo/index.html).
