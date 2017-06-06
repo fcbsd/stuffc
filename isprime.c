@@ -8,13 +8,19 @@
 #include <stdlib.h>
 
 int main(int, char **);
-int hasdivisor(int);
+int hasdivisor(int);  
 int isprime(int, int);
+int nextprime(int);
+int prevprime(int);
 
-int main(int argc, char **argv) {
+int 
+main(int argc, char **argv) 
+{
 	
 	int c; /* check number */
 	int i; /* number passed */
+	int next; /* next prime number */
+	int previous; /* previous prime number */
 
 	if (argc == 1) {
 		printf("No number given.\n");
@@ -27,6 +33,11 @@ int main(int argc, char **argv) {
 			printf("which is a prime number.\n");
 		} else {
 			printf("which is divisable by %d.\n", c);
+			previous = prevprime(i);
+			next = nextprime(i);
+			printf("The previous prime was: %d.\n", previous);
+			printf("and next prime is: %d.\n", next);
+
 		}
 	}
 
@@ -34,7 +45,9 @@ int main(int argc, char **argv) {
 }
 
 /* return first divisor or number if prime */
-int hasdivisor(int number) {
+int 
+hasdivisor(int number) 
+{
 	int a;
 	for (a = 2; a < number; a++) {
 		if ((number % a) == 0)
@@ -44,11 +57,44 @@ int hasdivisor(int number) {
 	return number;
 }
 
-int isprime(int number, int divisor) {
+/* check if the number is the divisor - if yes then prime */
+int 
+isprime(int number, int divisor) 
+{
 	if (number == divisor) {
 		return 0; /* true */
 	} else {
 		return 1; /* false */
 	}
 
+}
+
+/* find next prime that is greater than number */
+int
+nextprime(int number)
+{
+	int prime, count;
+	count = ++number;
+	prime = hasdivisor(count);	
+
+	while (isprime(prime, count) != 0) {
+		++count;
+		prime = hasdivisor(count);
+	}
+	return prime;
+}
+
+/* find previous prime number that is less than number */
+int
+prevprime(int number)
+{
+	int prime, count;
+	count = --number;
+	prime = hasdivisor(count);	
+
+	while (isprime(prime, count) != 0) {
+		--count;
+		prime = hasdivisor(count);
+	}
+	return prime;
 }
