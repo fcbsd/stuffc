@@ -1,6 +1,7 @@
 /* evens */
-/* Return the even numbers */
+/* Return the count of even numbers */
 #include<stdio.h>
+#include<stdlib.h>
 
 #define MAXINPUT 10
 
@@ -8,17 +9,29 @@ int main(int, char**);
 int evens(int *numbers, int length);
 
 int main(int argc, char **argv) {
-	int a=1, b=2, c=3, d=4, e=8;
-	int mynumbers[6]={a,b,c,d,e};
+	int i;
 	int inputnumbs[MAXINPUT];
 	int count = 0;
 
 	if(argc == 1) {
 		printf("No numbers given. Exiting.\n");
-		return 0;
+		return (EXIT_FAILURE);
 	}
-	printf(" The arg count is: %d \n", argc);	
-	count = evens(mynumbers, 5);
+	printf("The arg count is: %d \n", argc);	
+	if (argc >= MAXINPUT) {
+		printf("Too many args. Exiting\n");
+		return(EXIT_FAILURE);
+	}
+		
+	for (i = 1; i < argc; i++) {
+		if (i == 0)
+			continue;
+		else {
+			inputnumbs[i - 1] = atoi(argv[i]);
+		}
+	}
+
+	count = evens(inputnumbs, argc - 1);
 	printf(" The count is: %d \n", count);	
 
 	count = 0; /* reset counter */
