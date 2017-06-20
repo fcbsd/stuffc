@@ -1,4 +1,4 @@
-/* a a time program */
+/* a time program */
 #include <stdio.h>
 #include <time.h>
 
@@ -39,8 +39,10 @@ int main(void) {
 
 int timediff(int time) {
 	int remainder;
-	int mins;
-	int hours;
+	/* use global
+	 * int mins;
+	 * int hours;
+	 */
 
 	remainder = time % HRS;
 	hours = time / HRS;
