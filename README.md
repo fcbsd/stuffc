@@ -10,3 +10,7 @@ In addition to these two texts I will also be diving into: [Hacking: The Art Of 
 I've also added a kilo directory which follows the [Build Your Own Editor tutorial](http://viewsourcecode.org/snaptoken/kilo/index.html).
 
 This repository also has C that I come across in [tweets](https://twitter.com/fcbsd) some of which I might retweet.
+
+###The How
+This code will be run on [OpenBSD](https://www.openbsd.org), compiled with clang:
+**clang -Wall -pedantic -o outfile infile.c**
