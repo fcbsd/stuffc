@@ -8,3 +8,5 @@ The books I'm using for learning C are C Primer Plus, Fifth Edition by Stephen P
 In addition to these two texts I will also be diving into: [Hacking: The Art Of Exploitation by Jon Erickson](https://www.nostarch.com/hacking2.htm) and Building Open Source Network Security Tools by Mike D. Schiffman.
 
 I've also added a kilo directory which follows the [Build Your Own Editor tutorial](http://viewsourcecode.org/snaptoken/kilo/index.html).
+
+This repository also has C that I come across in [tweets](https://twitter.com/fcbsd) some of which I might retweet.
