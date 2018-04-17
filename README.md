@@ -1,5 +1,5 @@
-#Stuff c 
-##A repository for code based around learning c programming.
+# Stuff c 
+## A repository for code based around learning c programming.
 
 The aim of this repository is to try and encourage me to do some C programming every day, with the goal of being able to submit patches to Open Source tools and projects.
 
@@ -11,6 +11,6 @@ I've also added a kilo directory which follows the [Build Your Own Editor tutori
 
 This repository also has C that I come across in [tweets](https://twitter.com/fcbsd) some of which I might retweet.
 
-###The How
+### The How
 This code will be run on [OpenBSD](https://www.openbsd.org), compiled with clang:
 **clang -Wall -pedantic -o outfile infile.c**
