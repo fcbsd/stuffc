@@ -9,7 +9,6 @@
 #define LOWER	-64
 #define STEP	16
 
-
 int main(void);
 float celsius(float);
 float fahrenheit(float);
@@ -19,7 +18,9 @@ int main(void) {
 	int i;
 	header();
 	for (i = LOWER; i <= UPPER; i = i + STEP) {
-		printf("%3d\t %6.1f\t %6.1f\n", i, celsius((float) i), fahrenheit((float) i));
+		printf("%3d\t %6.1f\t %6.1f\n", 
+			i, celsius((float) i), fahrenheit((float) i)
+		);
 	}
 
 	return 0;
