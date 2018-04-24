@@ -8,6 +8,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define PRIME_DEFINITION "A Prime Number " \
+    "is a positive integer (p > 1) that has no positive " \
+    "integer divisors other than 1 and itself.\n " \
+    "See http://mathworld.wolfram.com/PrimeNumber.html"
+
 extern char *__progname;
 
 int main(int, char **);
@@ -15,6 +20,7 @@ int hasdivisor(int);
 int isprime(int, int);
 int nextprime(int);
 int prevprime(int);
+int special(int number);
 void usage(void);
 
 void
@@ -39,6 +45,10 @@ main(int argc, char **argv)
 		i = atoi(argv[1]);
 		c = hasdivisor(i);
 		printf("You entered %d ", i);
+        if (i <= 2) {
+            special(i);
+            return 0; /* exit */
+        }
 		if (isprime(i, c) == 0) {
 			printf("which is a prime number.\n");
 		} else {
@@ -47,7 +57,6 @@ main(int argc, char **argv)
 			next = nextprime(i);
 			printf("The previous prime was: %d.\n", previous);
 			printf("and next prime is: %d.\n", next);
-
 		}
 	}
 
@@ -107,4 +116,17 @@ prevprime(int number)
 		prime = hasdivisor(count);
 	}
 	return prime;
+}
+/* special numbers */
+int
+special(int number)
+{
+    char *prime_def = PRIME_DEFINITION;
+    if(number == 1) {
+        printf("\nNumber 1 is special - it used to be a prime (Goldbach, 1742).\n");
+        printf("%s\n", prime_def);
+    }
+    if(number == 2)
+        printf("\nNumber 2 is special - it is the first and only even prime!\n");
+    return number;
 }
