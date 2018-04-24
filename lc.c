@@ -7,7 +7,9 @@ extern char *__progname; /* program name */
 
 int main(void);
 
-int main(void) {
+int 
+main(void) 
+{
 	printf("Program called as: %s\n", __progname);
 	int c, nl;
 	nl = 0;
