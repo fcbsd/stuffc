@@ -1,4 +1,5 @@
-/* 2017 is a prime number.
+/*
+ * 2017 is a prime number.
  * This program tests if a number is prime.
  * Idea from http://www.xkcd.com/1779/
  *
@@ -7,11 +8,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+extern char *__progname;
+
 int main(int, char **);
 int hasdivisor(int);  
 int isprime(int, int);
 int nextprime(int);
 int prevprime(int);
+void usage(void);
+
+void
+usage()
+{
+    fprintf(stderr, "Usage: %s [number]\n", __progname);
+    exit(1);
+}
 
 int 
 main(int argc, char **argv) 
@@ -23,8 +34,7 @@ main(int argc, char **argv)
 	int previous; /* previous prime number */
 
 	if (argc == 1) {
-		printf("No number given.\n");
-		return 0;
+		usage();
 	} else {
 		i = atoi(argv[1]);
 		c = hasdivisor(i);
