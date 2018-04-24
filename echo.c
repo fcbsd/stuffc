@@ -1,9 +1,13 @@
-/* echo.c -- repeats input */
+/* echo.c -- repeats input 
+ * Until a #
+ */
 #include <stdio.h>
 
 int main(void);
 
-int main(void) {
+int 
+main(void) 
+{
 	char ch;
 
 	while (( ch = getchar()) != '#')
