@@ -2,7 +2,7 @@
  * Exercise 1-9: copy input to output replacing multiple blanks with
  * a single blank
  *
- * Copyright (c) 2017 Fred Crowson <fcbsd@crowsons.com>
+ * Copyright (c) 2018 Fred Crowson <fcbsd@crowsons.com>
  */
 #include <stdio.h>
 
