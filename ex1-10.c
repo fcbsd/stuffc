@@ -1,10 +1,12 @@
 /* K&R
- * Exercise 1-10: copy input to output replacing tabs, backspaces, 
- * and backslashes 
- * Copyright (c) 2017 Fred Crowson <fcbsd@crowsons.com>
+ * Exercise 1-10: copy input to output replacing each tab, 
+ * backspace, and backslash with '\t' '\b' '\\'
  *
- * Note: backspaces don't seem to work...
- * 	 backslashes are ascii 92
+ * Notes: backspaces don't seem to work...
+ *        backspaces are ascii 92
+ *        enter is ascii 10
+ *
+ * Copyright (c) 2018 Fred Crowson <fcbsd@crowsons.com>
  */
 #include <stdio.h>
 
@@ -13,15 +15,15 @@ int main(void);
 int main(void) {
 	int ch;
 	while ((ch = getchar()) != EOF) {
-		if ( ch == '\n')
-			printf("\\n");
-		if ( ch == '\t')
-			printf("\\t");
-		if ( ch == '\b')
-			printf("\\b");
-		if ( ch == '\\')
-			printf("\\");
-		putchar(ch);	
+		if (ch == '\t') 
+            printf("\\t");
+		if (ch == '\b') 
+            printf("\\b");
+		if (ch == '\\') 
+            printf("\\");
+        else
+            printf("%c", ch);
+		
 	}
 	return 0;
 }
