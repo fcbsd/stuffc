@@ -5,6 +5,7 @@
  * Notes: backspaces don't seem to work...
  *        backspaces are ascii 92
  *        enter is ascii 10
+ *        tab is ascii 9
  *
  * Copyright (c) 2018 Fred Crowson <fcbsd@crowsons.com>
  */
@@ -20,7 +21,7 @@ int main(void) {
 		if (ch == '\b') 
             printf("\\b");
 		if (ch == '\\') 
-            printf("\\");
+            printf("\\\\");
         else
             printf("%c", ch);
 		
