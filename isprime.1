@@ -6,12 +6,18 @@
 .Nd checks if number is a prime number
 .Sh SYNOPSIS
 .Nm isprime
+.Op Fl v
+.Op Fl n
 .Op Ar number
 .Sh DESCRIPTION
 The
 .Nm
-utility checks if a number is prime.  If the number is not prime it 
-returns the previous prime and the next prime numbers.
+utility checks if a number is prime.  
+.Pp
+The options are as follows:
+.Bl -tag -width Ds
+.It Fl v
+Verbose - gives verbose output. If the number is not prime it returns the previous prime and the next prime numbers.
 .Sh HISTORY
 .Nm 
 was written to check if a year was a prime number.

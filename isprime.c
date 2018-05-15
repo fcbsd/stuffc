@@ -14,6 +14,8 @@
     "integer divisors other than 1 and itself.\n " \
     "See http://mathworld.wolfram.com/PrimeNumber.html"
 
+#define IS_PRIME "which is a prime number.\n"
+
 extern char *__progname;
 
 int main(int, char **);
@@ -21,7 +23,8 @@ int hasdivisor(int);
 int isprime(int, int);
 int nextprime(int);
 int prevprime(int);
-int special(int number);
+int special(int);
+int print(int, int);
 void usage(void);
 	
 int nearest = 0; /* nearest prime */
@@ -41,8 +44,7 @@ main(int argc, char **argv)
 	int c; /* check number */
 	int i; /* number passed */
 	int ch; /* arguments passed */
-	int next; /* next prime number */
-	int previous; /* previous prime number */
+    char *prime = IS_PRIME;
 
 	while ((ch = getopt(argc, argv, "nv")) != -1) {
 		switch (ch) {
@@ -59,22 +61,29 @@ main(int argc, char **argv)
 	}
 	argv += optind;
 
-	printf("argv: %s \n", *argv);
+	/* debug argv:
+     * printf("argv: %s \n", *argv);
+     */
 	i = atoi(*argv);
 	c = hasdivisor(i);
 	printf("You entered %d ", i);
         if (i <= 2) {
-            special(i);
+            if (verbose == 1)
+                special(i);
+            else
+                if (i == 1)
+                    printf("is not prime.\n");
+                else
+    			    printf("%s", prime);
             return 0; /* exit */
         }
 		if (isprime(i, c) == 0) {
-			printf("which is a prime number.\n");
+		    printf("%s", prime);
 		} else {
-			printf("which is divisable by %d.\n", c);
-			previous = prevprime(i);
-			next = nextprime(i);
-			printf("The previous prime was: %d.\n", previous);
-			printf("and next prime is: %d.\n", next);
+            if (verbose == 1)
+                print(i, c);
+            else 
+			    printf("which is divisable by %d.\n", c);
 		}
 
 	return 0;
@@ -145,5 +154,19 @@ special(int number)
     }
     if(number == 2)
         printf("\nNumber 2 is special - it is the first and only even prime!\n");
+    return number;
+}
+
+/* verbose output */
+int
+print(int number, int divisor)
+{
+	int next; /* next prime number */
+	int previous; /* previous prime number */
+	printf("which is divisable by %d.\n", divisor);
+	previous = prevprime(number);
+	next = nextprime(number);
+	printf("The previous prime was: %d.\n", previous);
+	printf("and next prime is: %d.\n", next);
     return number;
 }
