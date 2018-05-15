@@ -3,10 +3,11 @@
  * This program tests if a number is prime.
  * Idea from http://www.xkcd.com/1779/
  *
- * Copyright (c) 2017, Fred Crowson <fcbsd@crowsons.com>
+ * Copyright (c) 2017-8, Fred Crowson <fcbsd@crowsons.com>
  */
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h> /* for getopt(3) */
 
 #define PRIME_DEFINITION "A Prime Number " \
     "is a positive integer (p > 1) that has no positive " \
@@ -22,11 +23,14 @@ int nextprime(int);
 int prevprime(int);
 int special(int number);
 void usage(void);
+	
+int nearest = 0; /* nearest prime */
+int verbose = 0; /* verbose output */
 
 void
 usage()
 {
-    fprintf(stderr, "Usage: %s [number]\n", __progname);
+    fprintf(stderr, "Usage: %s [-nv][number]\n", __progname);
     exit(1);
 }
 
@@ -36,15 +40,29 @@ main(int argc, char **argv)
 	
 	int c; /* check number */
 	int i; /* number passed */
+	int ch; /* arguments passed */
 	int next; /* next prime number */
 	int previous; /* previous prime number */
 
-	if (argc == 1) {
-		usage();
-	} else {
-		i = atoi(argv[1]);
-		c = hasdivisor(i);
-		printf("You entered %d ", i);
+	while ((ch = getopt(argc, argv, "nv")) != -1) {
+		switch (ch) {
+			case 'n':
+				nearest = 1;
+				break;
+			case 'v':
+				verbose = 1;
+				break;
+			default:
+				usage();
+				/* not reached */
+		}
+	}
+	argv += optind;
+
+	printf("argv: %s \n", *argv);
+	i = atoi(*argv);
+	c = hasdivisor(i);
+	printf("You entered %d ", i);
         if (i <= 2) {
             special(i);
             return 0; /* exit */
@@ -58,7 +76,6 @@ main(int argc, char **argv)
 			printf("The previous prime was: %d.\n", previous);
 			printf("and next prime is: %d.\n", next);
 		}
-	}
 
 	return 0;
 }
