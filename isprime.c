@@ -23,6 +23,7 @@ int hasdivisor(int);
 int isprime(int, int);
 int nextprime(int);
 int prevprime(int);
+int nearestprime(int, int);
 int special(int);
 int print(int, int);
 void usage(void);
@@ -84,7 +85,11 @@ main(int argc, char **argv)
                 print(i, c);
             else 
 			    printf("which is divisable by %d.\n", c);
+            if (nearest == 1)
+                printf("The nearest prime is: %d \n", 
+                        nearestprime(i, verbose));
 		}
+
 
 	return 0;
 }
@@ -166,7 +171,25 @@ print(int number, int divisor)
 	printf("which is divisable by %d.\n", divisor);
 	previous = prevprime(number);
 	next = nextprime(number);
-	printf("The previous prime was: %d.\n", previous);
+	printf("The previous prime was: %d ", previous);
 	printf("and next prime is: %d.\n", next);
     return number;
+}
+/* nearest prime */
+int 
+nearestprime(int number, int verbose)
+{
+    int nd; /* difference between next prime and number */
+    int pd; /* difference between previous prime and number */
+
+    nd = nextprime(number) - number;
+    pd = number - prevprime(number);
+
+    if (verbose == 1)
+        printf("nd: %d and pd: %d \n", nd, pd);
+
+    if(nd >= pd)
+        return prevprime(number);
+
+    return nextprime(number);
 }

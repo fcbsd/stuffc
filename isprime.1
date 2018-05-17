@@ -18,9 +18,18 @@ The options are as follows:
 .Bl -tag -width Ds
 .It Fl v
 Verbose - gives verbose output. If the number is not prime it returns the previous prime and the next prime numbers.
+.It Fl n
+Nearest - gives the prime number nearest to the number given.
+.El
+.Pp
+If the number given is prime then the 
+.Op Fl v
+and 
+.Op Fl n
+have no effect.
 .Sh HISTORY
 .Nm 
-was written to check if a year was a prime number.
+was initially written to check if a year was a prime number.
 .Sh SEE ALSO
 .Lk http://www.xkcd.com/1779/ 
 .Sh AUTHORS
