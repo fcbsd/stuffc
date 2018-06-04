@@ -45,7 +45,6 @@ main(int argc, char **argv)
 	int c; /* check number */
 	int i; /* number passed */
 	int ch; /* arguments passed */
-    char *prime = IS_PRIME;
 
 	while ((ch = getopt(argc, argv, "nv")) != -1) {
 		switch (ch) {
@@ -67,24 +66,24 @@ main(int argc, char **argv)
      */
 	i = atoi(*argv);
 	c = hasdivisor(i);
-	printf("You entered %d ", i);
+	/* printf("You entered %d ", i); */
         if (i <= 2) {
             if (verbose == 1)
                 special(i);
             else
                 if (i == 1)
-                    printf("is not prime.\n");
+                    printf("%d\n", c);
                 else
-    			    printf("%s", prime);
+    			    printf("%d", i);
             return 0; /* exit */
         }
 		if (isprime(i, c) == 0) {
-		    printf("%s", prime);
+            printf("%d\n", i);
 		} else {
             if (verbose == 1)
                 print(i, c);
             else 
-			    printf("which is divisable by %d.\n", c);
+			    printf("%d\n", c);
             if (nearest == 1)
                 printf("The nearest prime is: %d \n", 
                         nearestprime(i, verbose));
@@ -168,6 +167,8 @@ print(int number, int divisor)
 {
 	int next; /* next prime number */
 	int previous; /* previous prime number */
+    /* char *prime = IS_PRIME; */
+    printf("You entered %d ", number);
 	printf("which is divisable by %d.\n", divisor);
 	previous = prevprime(number);
 	next = nextprime(number);
