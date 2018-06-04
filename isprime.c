@@ -16,6 +16,9 @@
 
 #define IS_PRIME "which is a prime number.\n"
 
+/* 193939 is a cirular prime arranging the digits results in a prime! */
+const int CIRCULARPRIME[6] = { 193939, 391939, 393919, 919393, 939391, 939193 };
+
 extern char *__progname;
 
 int main(int, char **);
@@ -25,6 +28,7 @@ int nextprime(int);
 int prevprime(int);
 int nearestprime(int, int);
 int special(int);
+int circular(int);
 int print(int, int);
 void usage(void);
 	
@@ -78,6 +82,7 @@ main(int argc, char **argv)
             return 0; /* exit */
         }
 		if (isprime(i, c) == 0) {
+            circular(i); /* check if circular prime */
             printf("%d\n", i);
 		} else {
             if (verbose == 1)
@@ -147,6 +152,7 @@ prevprime(int number)
 	}
 	return prime;
 }
+
 /* special numbers */
 int
 special(int number)
@@ -159,6 +165,18 @@ special(int number)
     if(number == 2)
         printf("\nNumber 2 is special - it is the first and only even prime!\n");
     return number;
+}
+
+/* circular primes */
+int
+circular(int prime)
+{
+    int i;
+    for(i=0; i < 6; i++) {
+        if (prime == CIRCULARPRIME[i])
+            printf("we have a circular prime!\n");
+    }
+    return 0;
 }
 
 /* verbose output */
@@ -176,6 +194,7 @@ print(int number, int divisor)
 	printf("and next prime is: %d.\n", next);
     return number;
 }
+
 /* nearest prime */
 int 
 nearestprime(int number, int verbose)
