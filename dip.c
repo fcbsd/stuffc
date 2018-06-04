@@ -5,6 +5,7 @@
  * http://www.maizure.org/projects/printf/index.html
  * printf() returns the character count as demonstrated 
  * by this version.
+ * Clang & gcc on OpenBSD do not optimise printf to puts
  */
 #include <stdio.h>
 
