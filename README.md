@@ -21,3 +21,7 @@ As code is developed it is planned to use the [hints](https://monkey.org/~marius
 ### Testing
 Looking into using [theft](https://github.com/silentbicycle/theft) for property-based testing.
 Looking into using [fraction](https://timetoplatypus.com/static/faction/index.html) for test-driven software development.
+
+#### Resources
+* [Project Based Tutorials in C](https://github.com/rby90/Project-Based-Tutorials-in-C/blob/master/README.md)
+* [Learning operating system development using Linux kernel and Raspberry Pi](https://github.com/s-matyukevich/raspberry-pi-os/blob/master/README.md)
