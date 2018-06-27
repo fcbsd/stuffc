@@ -4,6 +4,8 @@
  * Idea from http://www.xkcd.com/1779/
  *
  * Copyright (c) 2017-8, Fred Crowson <fcbsd@crowsons.com>
+ *
+ * See LICENSE.md in this directory for Licence information
  */
 #include <stdio.h>
 #include <stdlib.h>

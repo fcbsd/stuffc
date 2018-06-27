@@ -1,6 +1,6 @@
 BSD 2-Clause License
 
-Copyright (c) 2017, Fred Crowson <fcbsd@crowsons.com>
+Copyright (c) 2017-2018, Fred Crowson <fcbsd@crowsons.com>
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
