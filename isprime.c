@@ -21,6 +21,10 @@
 /* 193939 is a cirular prime arranging the digits results in a prime! */
 const int CIRCULARPRIME[6] = { 193939, 391939, 393919, 919393, 939391, 939193 };
 
+/* 73939133 is a curious prime: if you take one or more digits off 
+ * the end the resulting numbers are all prime */
+const int CURIOUSPRIME = 73939133
+
 extern char *__progname;
 
 int main(int, char **);
