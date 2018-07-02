@@ -1,11 +1,6 @@
 /* Definitions for the Deck of Cards 
+ * Copyrght (c) 2017-2018 fred@crowsons.com
  */
-
-/* Define Colours */
-#define RED ff0000
-#define BLUE 0000ff
-#define GREEN 00ff00
-#define YELLOW ffff00
 
 /* Define cards
  * possible cards:
@@ -38,6 +33,13 @@
 #define YELLOW  3
 
 #define FULLHAND    8   /* Size of dealt hand */
+
+/* Define Colours */
+#define CRED ff0000
+#define CBLUE 0000ff
+#define CGREEN 00ff00
+#define CYELLOW ffff00
+
 
 typedef     struct {
             int     rank;
