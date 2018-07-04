@@ -14,6 +14,13 @@ This repository also has C that I have come across in [tweets](https://twitter.c
 ### The How
 This code will be run on [OpenBSD](https://www.openbsd.org), compiled with clang:
 **clang -Wall -pedantic -o outfile infile.c**
+To easy development I have created a Makefile which as the following *CC_FLAGS*:
+**-Wall -pedantic -Werror=implicit-function-declaration -Werror=format**
+Calling:
+
+**make ARGS="infile.c" all**
+will generate an executable called *out* and **make clean** will remove *out*.
+
 The code should follow [style(9)](https://man.openbsd.org/style), and as program's develop it is planed to create [manual pages](https://man.openbsd.org/man) using [mdoc(7)](https://man.openbsd.org/mdoc). 
 
 As code is developed it is planned to use the [hints](https://monkey.org/~marius/unix-tools-hints.html) for [writing Unix tools](https://monkey.org/~marius/unix-tools-hints.html) to try to make the tools more useful.
