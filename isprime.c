@@ -10,34 +10,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h> /* for getopt(3) */
+#include "isprime.h"
 
-#define PRIME_DEFINITION "A Prime Number " \
-    "is a positive integer (p > 1) that has no positive " \
-    "integer divisors other than 1 and itself.\n " \
-    "See http://mathworld.wolfram.com/PrimeNumber.html"
-
-#define IS_PRIME "which is a prime number.\n"
-
-/* 193939 is a cirular prime arranging the digits results in a prime! */
-const int CIRCULARPRIME[6] = { 193939, 391939, 393919, 919393, 939391, 939193 };
-
-/* 73939133 is a curious prime: if you take one or more digits off 
- * the end the resulting numbers are all prime */
-const int CURIOUSPRIME = 73939133;
-
-extern char *__progname;
-
-int main(int, char **);
-int hasdivisor(int);  
-int isprime(int, int);
-int nextprime(int);
-int prevprime(int);
-int nearestprime(int, int);
-int special(int);
-int circular(int);
-int print(int, int);
-void usage(void);
-	
 int nearest = 0; /* nearest prime */
 int verbose = 0; /* verbose output */
 
