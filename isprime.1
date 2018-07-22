@@ -8,6 +8,7 @@
 .Nm isprime
 .Op Fl v
 .Op Fl n
+.Op Fl b
 .Op Ar number
 .Sh DESCRIPTION
 The
@@ -22,6 +23,10 @@ The options are as follows:
 Verbose - gives verbose output. If the number is not prime it returns the previous prime and the next prime numbers.
 .It Fl n
 Nearest - gives the prime number nearest to the number given.
+.It Fl b
+Boolean - returns 0 for false or 1 for true, if used with the 
+.Op Fl v 
+it will return 'True' or 'False'
 .El
 .Pp
 If the number given is prime then the 

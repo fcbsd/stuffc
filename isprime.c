@@ -14,11 +14,12 @@
 
 int nearest = 0; /* nearest prime */
 int verbose = 0; /* verbose output */
+int boolean = 0; /* boolean output */
 
 void
 usage()
 {
-    fprintf(stderr, "Usage: %s [-nv][number]\n", __progname);
+    fprintf(stderr, "Usage: %s [-nvb][number]\n", __progname);
     exit(1);
 }
 
@@ -30,7 +31,7 @@ main(int argc, char **argv)
 	int i; /* number passed */
 	int ch; /* arguments passed */
 
-	while ((ch = getopt(argc, argv, "nv")) != -1) {
+	while ((ch = getopt(argc, argv, "nvb")) != -1) {
 		switch (ch) {
 			case 'n':
 				nearest = 1;
@@ -38,6 +39,9 @@ main(int argc, char **argv)
 			case 'v':
 				verbose = 1;
 				break;
+            case 'b':
+                boolean = 1;
+                break;
 			default:
 				usage();
 				/* not reached */
@@ -51,29 +55,28 @@ main(int argc, char **argv)
 	i = atoi(*argv);
 	c = hasdivisor(i);
 	/* printf("You entered %d ", i); */
-        if (i <= 2) {
-            if (verbose == 1)
-                special(i);
+    if (i <= 2) {
+        if (verbose == 1)
+            special(i);
+        else
+            if (i == 1)
+                print(i, c, boolean);
             else
-                if (i == 1)
-                    printf("%d\n", c);
-                else
-    			    printf("%d", i);
-            return 0; /* exit */
-        }
-		if (isprime(i, c) == 0) {
+			    print(i, c, boolean);
+        return 0; /* exit */
+    }
+    if (isprime(i, c) == 0) {
             circular(i); /* check if circular prime */
-            printf("%d\n", i);
-		} else {
+            print(i, c, boolean);
+    } else {
             if (verbose == 1)
-                print(i, c);
+                printverbose(i, c);
             else 
-			    printf("%d\n", c);
+			    print(i, c, boolean);
             if (nearest == 1)
                 printf("The nearest prime is: %d \n", 
                         nearestprime(i, verbose));
-		}
-
+	}
 
 	return 0;
 }
@@ -158,10 +161,22 @@ circular(int prime)
     }
     return 0;
 }
+/* print output */
+int
+print(int number, int devisor, int boolean)
+{
+    if (boolean == 1 && (number == 1 || number != devisor))
+        printf("False\n");
+    else if (boolean == 1 && number == devisor)
+        printf("True\n");
+    else
+        printf("%d\n", devisor);
+    return 0;
+}
 
 /* verbose output */
 int
-print(int number, int divisor)
+printverbose(int number, int divisor)
 {
 	int next; /* next prime number */
 	int previous; /* previous prime number */

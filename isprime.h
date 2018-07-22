@@ -30,5 +30,6 @@ int prevprime(int);
 int nearestprime(int, int);
 int special(int);
 int circular(int);
-int print(int, int);
+int print(int, int, int);
+int printverbose(int, int);
 void usage(void);
