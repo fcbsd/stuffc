@@ -19,7 +19,7 @@ int boolean = 0; /* boolean output */
 void
 usage()
 {
-    fprintf(stderr, "Usage: %s [-nvb][number]\n", __progname);
+    fprintf(stderr, "Usage: %s [-bnv][number]\n", __progname);
     exit(1);
 }
 
@@ -31,7 +31,7 @@ main(int argc, char **argv)
 	int i; /* number passed */
 	int ch; /* arguments passed */
 
-	while ((ch = getopt(argc, argv, "nvb")) != -1) {
+	while ((ch = getopt(argc, argv, "bnv")) != -1) {
 		switch (ch) {
 			case 'n':
 				nearest = 1;
@@ -56,26 +56,29 @@ main(int argc, char **argv)
 	c = hasdivisor(i);
 	/* printf("You entered %d ", i); */
     if (i <= 2) {
-        if (verbose == 1)
+        /* 1 and 2 are special */
+        if (verbose)
             special(i);
-        else
+        else { 
             if (i == 1)
-                print(i, c, boolean);
+                print(i, c);
             else
-			    print(i, c, boolean);
+			    print(i, c); /* i is 2 */
+        }
+
         return 0; /* exit */
     }
-    if (isprime(i, c) == 0) {
+    if (isprime(i, c)) {
             circular(i); /* check if circular prime */
-            print(i, c, boolean);
+            print(i, c);
     } else {
-            if (verbose == 1)
+            if (verbose)
                 printverbose(i, c);
             else 
-			    print(i, c, boolean);
-            if (nearest == 1)
+			    print(i, c);
+            if (nearest)
                 printf("The nearest prime is: %d \n", 
-                        nearestprime(i, verbose));
+                        nearestprime(i));
 	}
 
 	return 0;
@@ -99,9 +102,9 @@ int
 isprime(int number, int divisor) 
 {
 	if (number == divisor) {
-		return 0; /* true */
+		return 1; /* true */
 	} else {
-		return 1; /* false */
+		return 0; /* false */
 	}
 
 }
@@ -145,6 +148,8 @@ special(int number)
         printf("\nNumber 1 is special - it used to be a prime (Goldbach, 1742).\n");
         printf("%s\n", prime_def);
     }
+    if(boolean)
+        printf("True");
     if(number == 2)
         printf("\nNumber 2 is special - it is the first and only even prime!\n");
     return number;
@@ -163,12 +168,12 @@ circular(int prime)
 }
 /* print output */
 int
-print(int number, int devisor, int boolean)
+print(int number, int devisor)
 {
     if (boolean == 1 && (number == 1 || number != devisor))
-        printf("False\n");
+        printf("0\n");
     else if (boolean == 1 && number == devisor)
-        printf("True\n");
+        printf("1\n");
     else
         printf("%d\n", devisor);
     return 0;
@@ -181,6 +186,8 @@ printverbose(int number, int divisor)
 	int next; /* next prime number */
 	int previous; /* previous prime number */
     /* char *prime = IS_PRIME; */
+    if(boolean)
+        printf("False\n");
     printf("You entered %d ", number);
 	printf("which is divisable by %d.\n", divisor);
 	previous = prevprime(number);
@@ -192,15 +199,15 @@ printverbose(int number, int divisor)
 
 /* nearest prime */
 int 
-nearestprime(int number, int verbose)
+nearestprime(int number)
 {
     int nd; /* difference between next prime and number */
     int pd; /* difference between previous prime and number */
 
     nd = nextprime(number) - number;
     pd = number - prevprime(number);
-
-    if (verbose == 1)
+    /* see https://www.le.ac.uk/users/rjm1/cotter/page_37.htm */
+    if (verbose)
         printf("nd: %d and pd: %d \n", nd, pd);
 
     if(nd >= pd)
