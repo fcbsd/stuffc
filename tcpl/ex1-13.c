@@ -5,7 +5,7 @@
  * histogram with the bars horizontal; a vertical orientation 
  * is more challenging.
  *
- * Copyright (c) 2018 Fred Crowson <fred@crowsons.com>
+ * Copyright (c) 2018 Fred Crowson <fcbsd@crowsons.com>
  */
 #include <stdio.h>
 

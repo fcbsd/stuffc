@@ -2,7 +2,7 @@
  * Exercise 1-14: write a program to print a histogram of the
  * letter frequencies of different characters in it's input.
  *
- * Copyright (c) Fred Crowson <fred@crowsons.com>
+ * Copyright (c) 2018 Fred Crowson <fcbsd@crowsons.com>
  */
 #include <stdio.h>
 
