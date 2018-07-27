@@ -1,5 +1,5 @@
 /* What is the size of ld?
- * Copyright (c) Fred Crowson <fcbsd@crowsons.com>
+ * Copyright (c) 2018 Fred Crowson <fcbsd@crowsons.com>
  */
 #include <stdio.h>
  
