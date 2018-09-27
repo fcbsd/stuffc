@@ -113,30 +113,30 @@ isprime(int number, int divisor)
 int
 nextprime(int number)
 {
-	int prime, count;
-	count = ++number;
-	prime = hasdivisor(count);	
+	int np, div;
+	np = number;
+	div = hasdivisor(np);	
 
-	while (isprime(prime, count) != 0) {
-		++count;
-		prime = hasdivisor(count);
+	while (isprime(np, div)) {
+		np++;
+		div = hasdivisor(np);
 	}
-	return prime;
+	return np;
 }
 
 /* find previous prime number that is less than number */
 int
 prevprime(int number)
 {
-	int prime, count;
-	count = --number;
-	prime = hasdivisor(count);	
+	int pp, div;
+	pp = --number;
+	div = hasdivisor(pp);	
 
-	while (isprime(prime, count) != 0) {
-		--count;
-		prime = hasdivisor(count);
+	while (isprime(pp, div) && div > 3) {
+		--pp;
+		div = hasdivisor(pp);
 	}
-	return prime;
+	return pp;
 }
 
 /* special numbers */
