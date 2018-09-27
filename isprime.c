@@ -37,11 +37,11 @@ main(int argc, char **argv)
 				nearest = 1;
 				break;
 			case 'v':
-				verbose = 1;
+				verbose += 1;
 				break;
-            case 'b':
-                boolean = 1;
-                break;
+		        case 'b':
+                		boolean = 1;
+                		break;
 			default:
 				usage();
 				/* not reached */
@@ -63,7 +63,7 @@ main(int argc, char **argv)
             if (i == 1)
                 print(i, c);
             else
-			    print(i, c); /* i is 2 */
+		    print(i, c); /* i is 2 */
         }
 
         return 0; /* exit */
@@ -114,10 +114,10 @@ int
 nextprime(int number)
 {
 	int np, div;
-	np = number;
+	np = number++;
 	div = hasdivisor(np);	
 
-	while (isprime(np, div)) {
+	while (isprime(np, div) == 0) {
 		np++;
 		div = hasdivisor(np);
 	}
@@ -132,7 +132,7 @@ prevprime(int number)
 	pp = --number;
 	div = hasdivisor(pp);	
 
-	while (isprime(pp, div) && div > 3) {
+	while (isprime(pp, div) == 0 && div > 3) {
 		--pp;
 		div = hasdivisor(pp);
 	}
@@ -166,6 +166,7 @@ circular(int prime)
     }
     return 0;
 }
+
 /* print output */
 int
 print(int number, int devisor)
