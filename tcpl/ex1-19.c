@@ -33,9 +33,9 @@ reverse(char s[MAX])
         new[i] = s[j-1];
         i++;
         j--;
-        printf("s: %c n: %c \n", s[i], new[i]);
+        /* debug: printf("s: %c n: %c \n", s[i], new[i]); */
     }
     new[i++] = '\0';
-    printf("%s is %s", s, new);
+    printf("%s is %s\n", s, new);
     return 0;
 }
