@@ -129,11 +129,11 @@ int
 prevprime(int number)
 {
 	int pp, div;
-	pp = --number;
+	pp = number--;
 	div = hasdivisor(pp);	
 
-	while (isprime(pp, div) == 0 && div > 2) {
-		--pp;
+	while (isprime(pp, div) == 0) {
+		pp--;
 		div = hasdivisor(pp);
 	}
 	return pp;
