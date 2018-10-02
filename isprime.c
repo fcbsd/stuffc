@@ -132,7 +132,7 @@ prevprime(int number)
 	pp = --number;
 	div = hasdivisor(pp);	
 
-	while (isprime(pp, div) == 0 && div > 3) {
+	while (isprime(pp, div) == 0 && div > 2) {
 		--pp;
 		div = hasdivisor(pp);
 	}
