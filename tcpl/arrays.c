@@ -1,4 +1,5 @@
 /* K&R 1.6 Arrays
+ * Page 22 Second Edition
  */
 #include <stdio.h>
 
@@ -32,4 +33,3 @@ main(void)
 
 	return 0;
 }
-
