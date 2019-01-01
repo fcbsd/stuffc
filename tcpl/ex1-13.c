@@ -5,6 +5,9 @@
  * histogram with the bars horizontal; a vertical orientation 
  * is more challenging.
  *
+ * Horizontal version completed
+ * Program core dumps when input is piped to this program
+ *
  * Copyright (c) 2018 Fred Crowson <fcbsd@crowsons.com>
  */
 #include <stdio.h>
@@ -51,6 +54,8 @@ main(void)
 
         printf("\n");
     }
+
+    printf("Done\n");
     
     return 0;
 }
