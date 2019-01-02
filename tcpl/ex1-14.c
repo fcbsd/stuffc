@@ -7,7 +7,8 @@
 #include <stdio.h>
 
 #define ALPHA 26    /* Letters in Alphabet */
-#define LCA 97      /* ASCII char code for a */
+#define LCa 97      /* ASCII char code for a */
+#define LCz 97      /* ASCII char code for z */
 
 int main(void);
 
@@ -16,14 +17,17 @@ main(void)
 {
     int c, i, j;
     int alpha[ALPHA];
+    /* find value of a and z */
+    printf("a: %d ", 'a');
+    printf("z: %d\n ", 'z');
     
-    for(i = 0; i < ALPHA; i++)
+    for(i = 0; i <= ALPHA; i++)
         alpha[i] = 0;
 
 
     while ((c = getchar()) != EOF) {
-        if( c >= LCA || c <= LCA + ALPHA) {
-            alpha[c-LCA]++;
+        if( c >= LCa || c <= LCz) {
+            alpha[c - LCa]++;
         }
     }
 
@@ -31,7 +35,7 @@ main(void)
 
     for(i = 0; i < ALPHA; i++)
     {
-        printf("%c: ", LCA + alpha[i]);
+        printf("%c: ", LCa + i);
         for(j = 0; j < alpha[i]; j++)
             printf("#");
         printf("\n");
