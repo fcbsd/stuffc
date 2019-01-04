@@ -22,9 +22,9 @@ To ease development I have created a Makefile which as the following *CC_FLAGS*:
 
 Calling:
 
-**make ARGS="infile.c" all**
+**make ARGS="infile" all**
 
-will generate an executable called *out* and **make clean** will remove *out*.
+will generate an executable called *infile* and **make ARGS="infile" clean** will remove *infile*.
 
 The code should follow [style(9)](https://man.openbsd.org/style), and as program's develop it is planed to create [manual pages](https://man.openbsd.org/man) using [mdoc(7)](https://man.openbsd.org/mdoc). 
 
