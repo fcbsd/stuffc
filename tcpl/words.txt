@@ -1,9 +1,10 @@
 a
 be
 so
-dog
-cat
 ant
+bat
+cat
+dog
 doom
 mouse
 canary
