@@ -1,0 +1,4 @@
+This line will be about 80 characters long - possible even longer but then I am not sure.
+This line should be 80 characters long, and thus fit in a standard terminal.Yes.
+This is a short line.
+This is a rambling load of mushrooms, made up to make an impossilbly useless sentence that is longer that the minimum length that we are interested in.
