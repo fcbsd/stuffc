@@ -2,3 +2,12 @@ This line will be about 80 characters long - possible even longer but then I am 
 This line should be 80 characters long, and thus fit in a standard terminal.Yes.
 This is a short line.
 This is a rambling load of mushrooms, made up to make an impossilbly useless sentence that is longer that the minimum length that we are interested in.
+This is a test text file
+Used for testing 80 character length lines
+123456789012345678901234567890123456789012345678901234567890123456789012345678901
+Once a upon a time their was a line whose length was greater that eighty characters and that line started this story.
+But it was a short story.
+About line length, using c from Kernighan and Richie with help from the openbsd manuals.
+Goodbye.
+This story will end on a short line so you might never know how this story finished which could be frustrating.
+The end.
