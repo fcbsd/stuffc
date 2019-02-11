@@ -1,14 +1,14 @@
-/* Exercise 1-16
- * modify longline.c so that it will correctly print the
- * length of the line, and as much as possible of the text.
- */
-/* TODO: add arbitary long line output
- * and check line length is correct.
- * Currently the MAXLINE limits the input size.
+/* Exercise 1-17
+ * Write a program to print all input lines that are longer than
+ * 80 characters
+ * test.txt as input lines.
+ *
+ * Copyright (c) 2019 Fred Crowson <fcbsd@crowsons.com>
  */
 #include <stdio.h>
 
-#define MAXLINE 512 /* maximum input line size */
+#define MAXLINE 512 	/* maximum input line size */
+#define LL 80		/* Line length */
 
 int getlocalline(char line[], int maxline);
 void copy(char to[], char from[]);
@@ -19,17 +19,26 @@ int
 main(void)
 {
 	int len; /* current line length */
-	int max = 0; /* maximum length seen so far */
+	int max; /* maximum length seen so far */
 	char line[MAXLINE]; /* current input line */
 	char longest[MAXLINE]; /* longest line saved here */
 
-	while ((len = getlocalline(line, MAXLINE)) > 0)
+	max = 0;
+
+	while ((len = getlocalline(line, MAXLINE)) > 0) {
 		if (len > max) {
 			max = len;
 			copy(longest, line);
 		}
+		if (len > LL) {
+			/* print lines with more that 80 chars */
+			printf("Len: %d\n", len);
+			printf("%s \n", line);
+		}
+	}
 	if (max > 0) {
 		/* there was a line */
+		printf("Longest line: \n");
 		printf("%s", longest);
 		printf("\n Line Length: %d\n", max);
 	}
