@@ -1,10 +1,11 @@
 /* Exercise 1-17
  * Write a program to print all input lines that are longer than
  * 80 characters
+ * test.txt as input lines.
  *
  * Based on the example in getdelim(3)
  *
- * Copyright (c) 2018 Fred Crowson <fcbsd@crowsons.com>
+ * Copyright (c) 2019 Fred Crowson <fcbsd@crowsons.com>
  */
 #include <err.h>
 #include <stdio.h>
