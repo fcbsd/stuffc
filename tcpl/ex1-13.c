@@ -8,6 +8,9 @@
  * Horizontal version completed
  * Program core dumps when input is piped to this program
  *
+ * Using: https://stackoverflow.com/a/1456358/8516343 I managed
+ * to pipe the test.txt to ex1-13 - but it's still getting SIGABRT
+ * 
  * Copyright (c) 2018 Fred Crowson <fcbsd@crowsons.com>
  */
 #include <stdio.h>
