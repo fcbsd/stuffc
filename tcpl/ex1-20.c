@@ -6,6 +6,10 @@
  * fixed set of tab stops, say every n columns.
  * Should n be a vailable or a symbolic 
  * parameter?
+ *
+ * This version replaces tabs with 8 underscores
+ * to make the replacement visible.
+ *
  */
 #include <stdio.h>
 
@@ -24,6 +28,7 @@ main (void)
 	while ((c = getchar()) != EOF )
 	{
 		if ( c == '\t') {
+			detab(line);
 			printf("%s", line);
 		} else {
 			putchar(c);

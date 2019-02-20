@@ -1,4 +1,7 @@
 this line ends in one tab	
-this line ends in two tabs	
+this line ends in two tabs		
 this line has no tabs 
+	this line starts with a tab
+		this line starts with two
+no tabs
 
