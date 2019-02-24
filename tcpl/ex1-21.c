@@ -12,4 +12,6 @@
  */
 #include <stdio.h>
 
+#define TABSTOP 8 /* number of spaces to a tabstop */
+
 
