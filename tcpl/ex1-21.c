@@ -14,4 +14,29 @@
 
 #define TABSTOP 8 /* number of spaces to a tabstop */
 
+int main(void);
+
+int
+main(void)
+{
+	int c;
+	int cs = 0; /* count spaces */
+	int isspace = 0; /* char is space */
+
+	while ((c = getchar()) != EOF )
+	{
+		if ( c == ' ') {
+			if (isspace > 0) {
+				isspace++;
+				cs++;
+			}
+			cs++;
+		} else {
+			printf("%d %d\n", isspace, cs);
+			isspace = 0;
+		}
+	}
+
+	return 0;
+}
 
