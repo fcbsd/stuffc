@@ -10,4 +10,5 @@ But it was a short story.
 About line length, using c from Kernighan and Richie with help from the openbsd manuals.
 Goodbye.
 This story will end on a short line so you might never know how this story finished which could be frustrating.
+This line will be over 40 characters but less that 72 so that we know.
 The end.
