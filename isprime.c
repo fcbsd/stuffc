@@ -70,6 +70,7 @@ main(int argc, char **argv)
     }
     if (isprime(i, c)) {
             circular(i); /* check if circular prime */
+            /* add check for absolute primes */
             if (verbose)
                 printverbose(i, c);
             else
@@ -159,7 +160,13 @@ special(int number)
     return number;
 }
 
-/* circular primes */
+/* circular primes 
+ * see https://en.wikipedia.org/wiki/Circular_prime
+ * These are primes where rearranging the order of the digits results
+ * in another prime: eg: 1193, 1931, 9311, 3119
+ * currently this function just uses the circular prime in the isprime.h
+ * file - need to convert to proper function.
+ */
 int
 circular(int prime)
 {
@@ -169,6 +176,16 @@ circular(int prime)
             printf("we have a circular prime!\n");
     }
     return 0;
+}
+/* Absolute primes or permutable primes
+ * see https://en.wikipedia.org/wiki/Permutable_prime
+ * These primes are primes that remain as primes no matter how
+ * you switch their digits positions.
+ */
+int
+absolute(int prime)
+{
+    return 0;    
 }
 
 /* print output */
@@ -191,6 +208,7 @@ printverbose(int number, int divisor)
     int next; /* next prime number */
     int previous; /* previous prime number */
     char *prime = IS_PRIME; /* the number is prime*/
+    char *curious = IS_CURIOUS; /* this is a curious prime */
     if(boolean && verbose) {
         if (number == divisor)
             printf("True\n"); 
@@ -202,6 +220,8 @@ printverbose(int number, int divisor)
         }
         if (number == divisor) {
             printf("%d %s\n", number, prime);
+            if (number == CURIOUSPRIME)
+                printf("%d %s\n", number, curious);
         } else {
 	    printf("You entered %d ", number);
 	    printf("which is divisable by %d.\n", divisor);
