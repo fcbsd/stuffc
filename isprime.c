@@ -3,7 +3,7 @@
  * This program tests if a number is prime.
  * Idea from http://www.xkcd.com/1779/
  *
- * Copyright (c) 2017-8, Fred Crowson <fcbsd@crowsons.com>
+ * Copyright (c) 2017-2019, Fred Crowson <fcbsd@crowsons.com>
  *
  * See LICENSE.md in this directory for Licence information
  */
@@ -26,35 +26,35 @@ usage()
 int 
 main(int argc, char **argv) 
 {
-	
-	int c; /* check number */
-	int i; /* number passed */
-	int ch; /* arguments passed */
+    
+    int c; /* check number */
+    int i; /* number passed */
+    int ch; /* arguments passed */
 
-	while ((ch = getopt(argc, argv, "bnv")) != -1) {
-		switch (ch) {
-			case 'n':
-				nearest = 1;
-				break;
-			case 'v':
-				verbose += 1;
-				break;
-		        case 'b':
-                		boolean = 1;
-                		break;
-			default:
-				usage();
-				/* not reached */
-		}
-	}
-	argv += optind;
+    while ((ch = getopt(argc, argv, "bnv")) != -1) {
+        switch (ch) {
+            case 'n':
+                nearest = 1;
+                break;
+            case 'v':
+                verbose += 1;
+                break;
+            case 'b':
+                boolean = 1;
+                break;
+            default:
+                usage();
+                /* not reached */
+        }
+    }
+    argv += optind;
 
-	/* debug argv:
+    /* debug argv:
      * printf("argv: %s \n", *argv);
      */
-	i = atoi(*argv);
-	c = hasdivisor(i);
-	/* printf("You entered %d ", i); */
+    i = atoi(*argv);
+    c = hasdivisor(i);
+    /* printf("You entered %d ", i); */
     if (i <= 2) {
         /* 1 and 2 are special */
         if (verbose)
@@ -63,49 +63,53 @@ main(int argc, char **argv)
             if (i == 1)
                 print(i, c);
             else
-		    print(i, c); /* i is 2 */
+            print(i, c); /* i is 2 */
         }
 
         return 0; /* exit */
     }
     if (isprime(i, c)) {
             circular(i); /* check if circular prime */
-            print(i, c);
+            if (verbose)
+                printverbose(i, c);
+            else
+                print(i, c);
+
     } else {
             if (verbose)
                 printverbose(i, c);
             else 
-			    print(i, c);
+                print(i, c);
             if (nearest)
                 printf("The nearest prime is: %d \n", 
                         nearestprime(i));
-	}
+    }
 
-	return 0;
+    return 0;
 }
 
 /* return first divisor or number if prime */
 int 
 hasdivisor(int number) 
 {
-	int a;
-	for (a = 2; a < number; a++) {
-		if ((number % a) == 0)
-			return a;
-	}
+    int a;
+    for (a = 2; a < number; a++) {
+        if ((number % a) == 0)
+            return a;
+    }
 
-	return number;
+    return number;
 }
 
 /* check if the number is the divisor - if yes then prime */
 int 
 isprime(int number, int divisor) 
 {
-	if (number == divisor) {
-		return 1; /* true */
-	} else {
-		return 0; /* false */
-	}
+    if (number == divisor) {
+        return 1; /* true */
+    } else {
+        return 0; /* false */
+    }
 
 }
 
@@ -113,30 +117,30 @@ isprime(int number, int divisor)
 int
 nextprime(int number)
 {
-	int np, div;
-	np = number++;
-	div = hasdivisor(np);	
+    int np, div;
+    np = number++;
+    div = hasdivisor(np);   
 
-	while (isprime(np, div) == 0) {
-		np++;
-		div = hasdivisor(np);
-	}
-	return np;
+    while (isprime(np, div) == 0) {
+        np++;
+        div = hasdivisor(np);
+    }
+    return np;
 }
 
 /* find previous prime number that is less than number */
 int
 prevprime(int number)
 {
-	int pp, div;
-	pp = number--;
-	div = hasdivisor(pp);	
+    int pp, div;
+    pp = number--;
+    div = hasdivisor(pp);   
 
-	while (isprime(pp, div) == 0) {
-		pp--;
-		div = hasdivisor(pp);
-	}
-	return pp;
+    while (isprime(pp, div) == 0) {
+        pp--;
+        div = hasdivisor(pp);
+    }
+    return pp;
 }
 
 /* special numbers */
@@ -184,17 +188,29 @@ print(int number, int devisor)
 int
 printverbose(int number, int divisor)
 {
-	int next; /* next prime number */
-	int previous; /* previous prime number */
-    /* char *prime = IS_PRIME; */
-    if(boolean)
-        printf("False\n");
-    printf("You entered %d ", number);
-	printf("which is divisable by %d.\n", divisor);
-	previous = prevprime(number);
-	next = nextprime(number);
-	printf("The previous prime was: %d ", previous);
-	printf("and next prime is: %d.\n", next);
+    int next; /* next prime number */
+    int previous; /* previous prime number */
+    char *prime = IS_PRIME; /* the number is prime*/
+    if(boolean && verbose) {
+        if (number == divisor)
+            printf("True\n"); 
+        else
+            printf("False\n");
+    } else {
+        if (verbose > 1) {
+            printf(" in extra verbose %d \n", verbose); 
+        }
+        if (number == divisor) {
+            printf("%d %s\n", number, prime);
+        } else {
+	    printf("You entered %d ", number);
+	    printf("which is divisable by %d.\n", divisor);
+	    previous = prevprime(number);
+	    next = nextprime(number);
+	    printf("The previous prime was: %d ", previous);
+	    printf("and next prime is: %d.\n", next);
+        }
+    }
     return number;
 }
 

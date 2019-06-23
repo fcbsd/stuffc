@@ -1,7 +1,7 @@
 /*
  * isprime header file. 
  *
- * Copyright (c) 2017-8, Fred Crowson <fcbsd@crowsons.com>
+ * Copyright (c) 2017-2019, Fred Crowson <fcbsd@crowsons.com>
  *
  * See LICENSE.md in this directory for Licence information
  */
@@ -11,7 +11,7 @@
     "integer divisors other than 1 and itself.\n " \
     "See http://mathworld.wolfram.com/PrimeNumber.html"
 
-#define IS_PRIME "which is a prime number.\n"
+#define IS_PRIME "is a prime number.\n"
 
 /* 193939 is a cirular prime arranging the digits results in a prime! */
 const int CIRCULARPRIME[6] = { 193939, 391939, 393919, 919393, 939391, 939193 };
