@@ -11,7 +11,7 @@ main(void)
 {
     int ch;
 
-    ch= getchar();
+    ch = getchar();
     while (ch != 'a'){
         if(ch != '\n')
             printf("ch was %c, value %d\n", ch, ch);
