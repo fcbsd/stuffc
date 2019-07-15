@@ -19,7 +19,7 @@ int boolean = 0; /* boolean output */
 void
 usage()
 {
-    fprintf(stderr, "Usage: %s [-bnv][number]\n", __progname);
+    fprintf(stderr, "Usage: %s [-bnv] [number]\n", __progname);
     exit(1);
 }
 
@@ -48,6 +48,11 @@ main(int argc, char **argv)
         }
     }
     argv += optind;
+
+    if (argv == NULL) {
+        printf("argv: %s \n", *argv);
+        usage();
+    }
 
     /* debug argv:
      * printf("argv: %s \n", *argv);
