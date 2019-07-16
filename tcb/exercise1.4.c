@@ -21,7 +21,7 @@ int
 main(void)
 {
     int ch;
-    int i;
+    int i, j, k;
     int number[ARSIZE] = { 0 };
     int numseq[ARSIZE] = { 0 };
     int temp =  0;
@@ -47,12 +47,15 @@ main(void)
         count += 1;
         ch = getchar();
     }
+
     /* bubble sort numbers */
-    int j, k;
     j = 0;
     while(j < seqcount) {
         k = j + 1;
-        while(k <= seqcount) {
+        while(k < seqcount) {
+            /* debug printf:
+             * printf("sc: %d  %d %d\n", seqcount, j, k);
+             */
             if(numseq[j] > numseq[k]) {
             /* swap */
             temp = numseq[j];
