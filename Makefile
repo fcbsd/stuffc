@@ -10,4 +10,4 @@ all:
 	${CC} ${ARGS}.c ${CC_FLAGS} -o ${ARGS}
 
 clean:
-	rm ${ARGS}.c ${ARGS}
+	rm ${ARGS}
