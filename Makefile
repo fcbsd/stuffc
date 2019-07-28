@@ -1,5 +1,5 @@
 # Makefile for c programmes
-# Copyright (c) 2018 Fred Crowson <fred@crowsons.com>
+# Copyright (c) 2018-19 Fred Crowson <fred@crowsons.com>
 # make ARGS="filename" 
 
 CC = /usr/bin/clang
