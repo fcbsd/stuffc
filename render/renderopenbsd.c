@@ -13,11 +13,13 @@
 #include FT_FREETYPE_H
 
 int main(void);
+int terminalprint(int);
 
 int
 main(void)
 {
     int error;
+    char ch;
     FT_Library ftlib;
     error = FT_Init_FreeType(&ftlib);
     if (error !=0 ) {
@@ -32,8 +34,26 @@ main(void)
 
     printf("FreeType version is: %d.%d.%d\n", major, minor, patch);
 
+    while ((ch = getchar()) != EOF) {
+        if (ch != '\n')
+        terminalprint(ch);
+    }
+
+    return 0;
+}
+
+int
+terminalprint(int letter)
+{
+    int error;
+    FT_Library ftlib;
 	FT_Face face;
 
+    error = FT_Init_FreeType(&ftlib);
+    if (error !=0 ) {
+	    printf("Failed initialise FreeType\n");
+	    exit(EXIT_FAILURE);
+    }
 	error = FT_New_Face(ftlib, "./UbuntuMono.ttf", 0, &face);
 	if (error != 0) {
 			printf("failed to load font face\n");
@@ -46,7 +66,7 @@ main(void)
 		exit(EXIT_FAILURE);
 	}
 
-	FT_UInt glyph_index = FT_Get_Char_Index(face, 'b');
+	FT_UInt glyph_index = FT_Get_Char_Index(face, letter);
 
 	FT_Int32 load_flags = FT_LOAD_DEFAULT;
 
@@ -82,7 +102,6 @@ main(void)
 		}
 		printf("\n");
 	}
-	
     
     return 0;
 }
