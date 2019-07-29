@@ -3,10 +3,10 @@
  * https://mrandri19.github.io/2019/07/18/modern-text-rendering-linux-ep1.html
  * 
  * OpenBSD Version
+ * OpenBSD currently has freetype 1.3.1
  */
 #include <stdio.h>
-#include <freetype2/ft2build.h>
-#include FT_FREETYPE_H
+#include <freetype/freetype.h>
 
 int main(void);
 
