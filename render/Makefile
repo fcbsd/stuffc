@@ -1,19 +1,22 @@
 # Makefile for render programmes
 # Copyright (c) 2019 Fred Crowson <fred@crowsons.com>
 # make on Centos 7.6-1810
-
+# This file does not work but calling:
+# clang -I/usr/include/freetype2 -I/usr/include/libpng15 -lfreetype -Wall -Werror -v -o render render.c
+# directly does...
 ARGS = render
 
 CC = /usr/bin/clang
 CC_FLAGS = \
  -Wall -pedantic \
- -Werror=implicit-function-declaration -Werror=format -g
+ -Werror -g
 INCLUDES = \
- -I/usr/local/include/freetype1 \
- -I/usr/local/include/libpng16 
+ -I/usr/local/include/freetype2 \
+ -I/usr/local/include/libpng15 
+LIB = -lfreetype
 
 all:
-	${CC} ${INCLUDES} ${ARGS}.c ${CC_FLAGS} -o ${ARGS}
+	${CC} ${INCLUDES} ${LIB} ${CC_FLAGS} -o ${ARGS} ${ARGS}.c
 
 clean:
 	rm ${ARGS}
