@@ -1,19 +1,20 @@
 # Makefile for render programmes
 # Copyright (c) 2019 Fred Crowson <fred@crowsons.com>
-# make on Centos 7.6-1810
-ARGS = render
+# make on OpenBSD
+ARGS = renderopenbsd
+OUTS = render
 
 CC = /usr/bin/clang
 CC_FLAGS = \
  -Wall -pedantic \
  -Werror -g
 INCLUDES = \
- -I/usr/include/freetype2 \
- -I/usr/include/libpng15 
-LIB = -lfreetype
+ -I/usr/X11R6/include/freetype2 \
+ -I/usr/local/lib/libpng16 
+LIB = -L/usr/X11R6/lib -lfreetype
 
 all:
-	${CC} ${INCLUDES} ${LIB} ${CC_FLAGS} -o ${ARGS} ${ARGS}.c
+	${CC} ${INCLUDES} ${LIB} ${CC_FLAGS} -o ${OUTS} -v ${ARGS}.c
 
 clean:
 	rm ${ARGS}
