@@ -9,12 +9,11 @@ CC_FLAGS = \
  -Wall -pedantic \
  -Werror -g
 INCLUDES = \
- -I/usr/X11R6/include/freetype2 \
- -I/usr/local/lib/libpng16 
-LIB = -L/usr/X11R6/lib -lfreetype
+ -I/usr/X11R6/include/freetype2 
+LIB = -L/usr/X11R6/lib -L/usr/local/lib -lfreetype -lpng
 
 all:
 	${CC} ${INCLUDES} ${LIB} ${CC_FLAGS} -o ${OUTS} -v ${ARGS}.c
 
 clean:
-	rm ${ARGS}
+	rm ${OUTS}
