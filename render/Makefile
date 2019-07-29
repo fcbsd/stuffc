@@ -11,8 +11,8 @@ CC_FLAGS = \
  -Wall -pedantic \
  -Werror -g
 INCLUDES = \
- -I/usr/local/include/freetype2 \
- -I/usr/local/include/libpng15 
+ -I/usr/include/freetype2 \
+ -I/usr/include/libpng15 
 LIB = -lfreetype
 
 all:
