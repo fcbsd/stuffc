@@ -1,0 +1,21 @@
+/* decode some hex
+ * https://twitter.com/isislovecruft/status/1157386823406108675
+ *
+ * nsfw
+ */
+#include <stdio.h>
+
+int
+main(void)
+{
+    int a;
+    unsigned char hexes[23] =  {0x66, 0x75, 0x63, 0x6b, 0x20, 0x79, 0x65, 0x61, 
+        0x68, 0x20, 0x69, 0x27, 0x6d, 0x20, 0x6e, 0x6f, 0x6e, 0x62, 0x69, 0x6e, 
+        0x61, 0x72, 0x79};
+
+    for(a = 0; a < 23; a++) {
+        printf("%c", hexes[a]);
+    }
+    printf("\n");
+    return 0;
+}
