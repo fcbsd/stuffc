@@ -4,8 +4,8 @@
 int main(int, char **);
 
 int main(int argc, char **argv) {
+    printf("Computer can be bad...\n");
     printf("argc: %d \n", argc);
     printf("argv: %s \n", *argv);
-    printf("Computer can be badish\n");
     return 0;
 }
