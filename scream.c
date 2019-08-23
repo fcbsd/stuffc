@@ -9,8 +9,10 @@
 int 
 main(int argc, char * argv[])
 {
-    while (1) {
+    int i = 0;
+    while (i < 10) {
         printf("%c%c%c%c\n", 0xF0, 0x9F, 0x98, 0xB1);
+        i++;
     }
     return 1;
 }
