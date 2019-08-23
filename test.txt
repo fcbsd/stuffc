@@ -1,0 +1,8 @@
+     this starts with a tab and space
+this line has 5 blanks
+this	line	has	5	tabs
+and this file has 3 newlines
+		'\'"\" and \\
+this line has \n and \n in here.            
+this line has \\n and \\n in here.            
+end
