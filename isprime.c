@@ -30,7 +30,7 @@ main(int argc, char **argv)
     int c; /* check number */
     int i; /* number passed */
     int ch; /* arguments passed */
-
+    
     while ((ch = getopt(argc, argv, "bnv")) != -1) {
         switch (ch) {
             case 'n':
@@ -49,14 +49,13 @@ main(int argc, char **argv)
     }
     argv += optind;
 
-    if (argv == NULL) {
-        printf("argv: %s \n", *argv);
+    /* debug argv: */
+    /* the check of argv == NULL was being ignored - why? */
+    if (argc <= 1 ) {
+        printf("argv: %s atoi() doesn't like null \n", *argv);
         usage();
     }
-
-    /* debug argv:
-     * printf("argv: %s \n", *argv);
-     */
+     
     i = atoi(*argv);
     c = hasdivisor(i);
     /* printf("You entered %d ", i); */
